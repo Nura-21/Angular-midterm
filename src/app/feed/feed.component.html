@@ -1,0 +1,29 @@
+<div *ngIf="loading" class="loader absolute top-[50%] left-[50%]"></div>
+<div *ngIf="!loading" class="w-full h-[90vh] flex flex-col gap-2 items-center mt-2 max-h-[80vh] overflow-y-scroll">
+    <form
+    #f="ngForm"
+    (ngSubmit)="addPost(f)"
+    class="flex gap-x-2 p-2 w-fit"
+>
+New post
+    <input
+    class="text-center border border-[#ffffff40] bg-black text-white rounded-md p-2 w-fit"
+    type="text"
+    ngModel
+    name="text"
+/></form><aside class="w-full text-center border p-4 rounded-lg flex flex-col gap-2">
+        <h2>Posts from MockApi</h2>
+        <div *ngFor="let post of posts; let i = index" class="w-full flex flex-col p-2 text-center rounded-lg border">
+            <p>{{post.text}}</p>
+            <span>Comments: {{post.comments}}</span>
+            <span>Likes: {{post.likes}}</span>
+        </div>
+    </aside>
+    <aside appHighlight class="w-full text-center border p-4 rounded-lg flex flex-col gap-2">
+        <h2>Quotes from Api</h2>
+        <div *ngFor="let quote of quotes; let i = index" class="w-full p-2 text-center rounded-lg border">
+            <p>{{quote.text}}</p>
+            <span>Author: {{quote.author}}</span>
+        </div>
+    </aside>
+</div>
